@@ -3,6 +3,10 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ll="ls -lah"
 
+# Modern replacements (only if installed)
+command -v eza &>/dev/null && alias ls="eza --icons" && alias ll="eza -lah --icons"
+command -v bat &>/dev/null && alias cat="bat"
+
 # Git
 alias gs="git status"
 alias ga="git add"

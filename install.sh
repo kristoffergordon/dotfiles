@@ -16,9 +16,13 @@ else
   echo "==> Homebrew already installed, skipping"
 fi
 
-# 2. Dependencies
+# 2. Bootstrap stow and git (needed before brew bundle)
 echo "==> Installing stow and git"
 brew install stow git
+
+# 3a. Install all Brewfile packages
+echo "==> Installing Brewfile packages"
+brew bundle --file="$DOTFILES_DIR/Brewfile"
 
 # 3. zsh as default shell
 if [ "$SHELL" != "/bin/zsh" ]; then
