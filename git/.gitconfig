@@ -1,0 +1,19 @@
+[user]
+	name = Kristoffer Gordon
+	email = kgdn@proton.me
+
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore_global
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = false
+
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	lg = log --oneline --graph --decorate --all
