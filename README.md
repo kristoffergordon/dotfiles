@@ -9,6 +9,7 @@ Personal dotfiles for macOS, managed with [GNU Stow](https://www.gnu.org/softwar
 | `zsh` | `.zshrc` | Shell config, aliases, PATH |
 | `p10k` | `.p10k.zsh` | Powerlevel10k prompt theme |
 | `claude` | `.claude/settings.json` | Claude Code settings |
+| `git` | `.gitconfig` | Git user, aliases, defaults |
 
 ## Fresh machine setup
 
