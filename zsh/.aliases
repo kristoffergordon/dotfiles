@@ -1,0 +1,19 @@
+# Navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ll="ls -lah"
+
+# Git
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+alias gp="git push"
+alias gl="git lg"
+alias gco="git checkout"
+
+# Python
+alias python=python3.12
+alias pip=pip3
+
+# Dotfiles
+alias dotfiles="cd ~/dotfiles"

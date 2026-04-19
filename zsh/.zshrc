@@ -10,5 +10,4 @@ source ~/.powerlevel10k/powerlevel10k.zsh-theme
 # Load p10k config (run `p10k configure` to regenerate)
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 [[ -f ~/.secrets ]] && source ~/.secrets
-
-alias python=python3.12
+[[ -f ~/.aliases ]] && source ~/.aliases
