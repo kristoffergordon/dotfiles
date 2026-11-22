@@ -1,108 +1,40 @@
 # dotfiles
 
-Personal dotfiles for macOS, managed with [GNU Stow](https://www.gnu.org/software/stow/).
+Personal dotfiles for macOS, managed with [GNU Stow](https://www.gnu.org/software/stow/). Each top-level folder is a package whose contents are symlinked into `~`.
 
-## What's included
+| Package | Files |
+|---|---|
+| `zsh` | `.zprofile`, `.zshrc`, `.aliases` |
+| `p10k` | `.p10k.zsh` |
+| `git` | `.gitconfig`, `.gitignore_global` |
+| `claude` | `.claude/settings.json` (hooks come from [harness](https://github.com/kristoffergordon/harness)) |
+| `nvim` | `.config/nvim/init.lua` |
 
-| Package | File | Purpose |
-|---|---|---|
-| `zsh` | `.zprofile`, `.zshrc`, `.aliases` | Shell config, aliases, PATH |
-| `p10k` | `.p10k.zsh` | Powerlevel10k prompt theme |
-| `claude` | `.claude/settings.json` | Claude Code settings |
-| `git` | `.gitconfig`, `.gitignore_global` | Git user, aliases, defaults |
-| `nvim` | `.config/nvim/init.lua` | Neovim config (LSP for Python, Bash, Lua) |
+Tools are declared in the [`Brewfile`](./Brewfile).
 
-## Fresh machine setup
-
-> Or just run `bash install.sh` — it automates all steps below.
-
-### 1. Install Homebrew
-
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-### 2. Install stow and git (needed to bootstrap)
-
-```bash
-brew install stow git
-```
-
-### 3. Set zsh as default shell (if not already)
-
-```bash
-chsh -s /bin/zsh
-```
-
-### 4. Clone this repo
+## Install
 
 ```bash
 git clone https://github.com/kristoffergordon/dotfiles.git ~/dotfiles
+bash ~/dotfiles/install.sh
 ```
 
-### 5. Install all tools from Brewfile
+The script is safe to rerun. Afterwards, add API keys to `~/.secrets`.
 
-```bash
-brew bundle --file=~/dotfiles/Brewfile
-uv python install 3.12 --default
-```
+## Day to day
 
-### 6. Create your secrets file
+- **Edit a config:** edit it in `~`; the symlink means the change is already in the repo. Commit it.
+- **Add a tool:** add it to the `Brewfile`, then `brew bundle --file=~/dotfiles/Brewfile`.
+- **Add a dotfile:** mirror its path under a new package, move it in, then stow it:
 
-This file is never committed. Add any API keys or tokens here.
+  ```bash
+  mkdir -p ~/dotfiles/foo/.config/foo
+  mv ~/.config/foo/config ~/dotfiles/foo/.config/foo/
+  stow -d ~/dotfiles -t ~ foo
+  ```
 
-```bash
-cat > ~/.secrets << 'EOF'
-# Secret environment variables — never commit this file
-export OPENAI_API_KEY=your-key-here
-EOF
-```
+  Then add `foo` to the stow line in `install.sh`.
 
-### 7. Install Powerlevel10k
+## Never committed
 
-```bash
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlevel10k
-```
-
-### 8. Stow all packages
-
-```bash
-stow -d ~/dotfiles -t ~ zsh p10k git claude nvim
-```
-
-Your dotfiles are now symlinked. Any edits to files in `~` will be reflected directly in `~/dotfiles`, ready to commit and push.
-
-### 9. Install the Claude Code harness
-
-`claude/.claude/settings.json` runs hooks from [harness](https://github.com/kristoffergordon/harness). Without them, every Bash tool call is blocked.
-
-```bash
-git clone https://github.com/kristoffergordon/harness.git ~/Projects/harness
-~/Projects/harness/install.sh
-```
-
-## CLI tools cheat sheet
-
-| Command | Tool | What it does |
-|---|---|---|
-| `Ctrl+R` | fzf | Fuzzy search shell history |
-| `z <dir>` | zoxide | Jump to a frecent directory |
-| `ls` | eza | Coloured directory listing with icons |
-| `ll` | eza | Long listing with icons |
-| `cat <file>` | bat | Syntax-highlighted file view |
-| `rg <term>` | ripgrep | Fast recursive text search |
-| `jq '.' file.json` | jq | Pretty-print and query JSON |
-
-## Adding a new dotfile
-
-1. Create a package folder: `mkdir ~/dotfiles/<tool>`
-2. Mirror the path from `~`: e.g. for `~/.config/foo/bar.conf` → `~/dotfiles/foo/.config/foo/bar.conf`
-3. Move the original file in: `mv ~/.config/foo/bar.conf ~/dotfiles/foo/.config/foo/bar.conf`
-4. Stow it: `stow -d ~/dotfiles -t ~ foo`
-5. Commit and push
-
-## What is never committed
-
-- `~/.secrets` — API keys and tokens (loaded by `.zshrc` at runtime)
-- `~/.ssh/` — SSH private keys
-- `*.local` files — machine-specific overrides
+`~/.secrets` (API keys, sourced by `.zshrc`), `~/.ssh/`, and `*.local` files.
