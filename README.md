@@ -6,7 +6,7 @@ Personal dotfiles for macOS, managed with [GNU Stow](https://www.gnu.org/softwar
 
 | Package | File | Purpose |
 |---|---|---|
-| `zsh` | `.zshrc`, `.aliases` | Shell config, aliases, PATH |
+| `zsh` | `.zprofile`, `.zshrc`, `.aliases` | Shell config, aliases, PATH |
 | `p10k` | `.p10k.zsh` | Powerlevel10k prompt theme |
 | `claude` | `.claude/settings.json` | Claude Code settings |
 | `git` | `.gitconfig`, `.gitignore_global` | Git user, aliases, defaults |
@@ -43,6 +43,7 @@ git clone https://github.com/kristoffergordon/dotfiles.git ~/dotfiles
 
 ```bash
 brew bundle --file=~/dotfiles/Brewfile
+uv python install 3.12 --default
 ```
 
 ### 6. Create your secrets file
@@ -69,6 +70,15 @@ stow -d ~/dotfiles -t ~ zsh p10k git claude
 ```
 
 Your dotfiles are now symlinked. Any edits to files in `~` will be reflected directly in `~/dotfiles`, ready to commit and push.
+
+### 9. Install the Claude Code harness
+
+`claude/.claude/settings.json` runs hooks from [harness](https://github.com/kristoffergordon/harness). Without them, every Bash tool call is blocked.
+
+```bash
+git clone https://github.com/kristoffergordon/harness.git ~/Projects/harness
+~/Projects/harness/install.sh
+```
 
 ## CLI tools cheat sheet
 

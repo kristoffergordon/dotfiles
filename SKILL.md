@@ -15,6 +15,7 @@ dotfiles/
 ├── SKILL.md              # This file — repo knowledge for AI agents
 ├── prompts.md            # Prompt engineering reference
 ├── zsh/
+│   ├── .zprofile         # Login shell: Homebrew PATH
 │   ├── .zshrc            # Shell entry point
 │   └── .aliases          # All aliases and modern tool overrides
 ├── p10k/
@@ -78,7 +79,7 @@ This repo is public. Never commit secrets.
 
 | Package | Stow command | Files |
 |---|---|---|
-| `zsh` | `stow zsh` | `.zshrc`, `.aliases` |
+| `zsh` | `stow zsh` | `.zprofile`, `.zshrc`, `.aliases` |
 | `p10k` | `stow p10k` | `.p10k.zsh` |
 | `git` | `stow git` | `.gitconfig`, `.gitignore_global` |
 | `claude` | `stow claude` | `.claude/settings.json` |

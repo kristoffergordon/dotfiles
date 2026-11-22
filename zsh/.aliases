@@ -15,9 +15,5 @@ alias gp="git push"
 alias gl="git lg"
 alias gco="git checkout"
 
-# Python
-alias python=python3.12
-alias pip=pip3
-
 # Dotfiles
 alias dotfiles="cd ~/dotfiles"

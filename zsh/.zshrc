@@ -18,3 +18,6 @@ command -v zoxide &>/dev/null && eval "$(zoxide init zsh)"
 # fzf keybindings and completions
 [ -f /opt/homebrew/opt/fzf/shell/key-bindings.zsh ] && source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
 [ -f /opt/homebrew/opt/fzf/shell/completion.zsh ] && source /opt/homebrew/opt/fzf/shell/completion.zsh
+
+# fnm: per-project Node versions (keep last, after PATH edits)
+command -v fnm &>/dev/null && eval "$(fnm env --use-on-cd --shell zsh)"

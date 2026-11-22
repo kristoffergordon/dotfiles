@@ -6,8 +6,10 @@ brew "stow"
 brew "go-task"
 
 # Python
-brew "python@3.12"
 brew "uv"              # fast Python package manager
+
+# Node
+brew "fnm"             # per-project Node versions
 
 # Shell utilities
 brew "fzf"             # fuzzy finder (history, file search)
