@@ -68,7 +68,7 @@ fi
 
 # Stow all packages
 echo "==> Stowing dotfiles"
-stow -d "$DOTFILES_DIR" -t "$HOME" --restow zsh p10k git claude
+stow -d "$DOTFILES_DIR" -t "$HOME" --restow zsh p10k git claude nvim
 
 # Claude Code harness (hooks referenced by claude/.claude/settings.json; must follow stow)
 if [ -d "$HARNESS_DIR" ]; then

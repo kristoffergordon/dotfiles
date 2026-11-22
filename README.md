@@ -10,6 +10,7 @@ Personal dotfiles for macOS, managed with [GNU Stow](https://www.gnu.org/softwar
 | `p10k` | `.p10k.zsh` | Powerlevel10k prompt theme |
 | `claude` | `.claude/settings.json` | Claude Code settings |
 | `git` | `.gitconfig`, `.gitignore_global` | Git user, aliases, defaults |
+| `nvim` | `.config/nvim/init.lua` | Neovim config (LSP for Python, Bash, Lua) |
 
 ## Fresh machine setup
 
@@ -66,7 +67,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlevel10
 ### 8. Stow all packages
 
 ```bash
-stow -d ~/dotfiles -t ~ zsh p10k git claude
+stow -d ~/dotfiles -t ~ zsh p10k git claude nvim
 ```
 
 Your dotfiles are now symlinked. Any edits to files in `~` will be reflected directly in `~/dotfiles`, ready to commit and push.

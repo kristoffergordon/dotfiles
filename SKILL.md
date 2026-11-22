@@ -23,9 +23,12 @@ dotfiles/
 ├── git/
 │   ├── .gitconfig        # Git user, aliases, defaults
 │   └── .gitignore_global # Global gitignore
-└── claude/
-    └── .claude/
-        └── settings.json # Claude Code settings
+├── claude/
+│   └── .claude/
+│       └── settings.json # Claude Code settings
+└── nvim/
+    └── .config/nvim/
+        └── init.lua      # Neovim config
 ```
 
 ## Adding a Tool
@@ -83,3 +86,4 @@ This repo is public. Never commit secrets.
 | `p10k` | `stow p10k` | `.p10k.zsh` |
 | `git` | `stow git` | `.gitconfig`, `.gitignore_global` |
 | `claude` | `stow claude` | `.claude/settings.json` |
+| `nvim` | `stow nvim` | `.config/nvim/init.lua` |

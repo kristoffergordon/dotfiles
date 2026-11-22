@@ -2,6 +2,7 @@
 alias ..="cd .."
 alias ...="cd ../.."
 alias ll="ls -lah"
+alias vim="nvim"
 
 # Modern replacements (only if installed)
 command -v eza &>/dev/null && alias ls="eza --icons" && alias ll="eza -lah --icons"

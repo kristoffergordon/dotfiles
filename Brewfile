@@ -20,4 +20,12 @@ brew "ripgrep"         # fast grep (used by editors and fzf)
 brew "jq"              # JSON processor — essential for API work
 
 # Editor
-brew "vim"
+brew "neovim"
+
+# Language servers and tools (used by Neovim)
+brew "basedpyright"
+brew "ruff"
+brew "bash-language-server"
+brew "shellcheck"
+brew "shfmt"
+brew "lua-language-server"
